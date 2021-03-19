@@ -1,0 +1,26 @@
+[02-Mar-2021 23:55:42 UTC] PHP Parse error:  syntax error, unexpected 'get_header' (T_STRING) in C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\themes\neve\404.php on line 8
+[02-Mar-2021 23:55:44 UTC] PHP Parse error:  syntax error, unexpected 'get_header' (T_STRING) in C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\themes\neve\404.php on line 8
+[02-Mar-2021 23:55:45 UTC] PHP Parse error:  syntax error, unexpected 'get_header' (T_STRING) in C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\themes\neve\404.php on line 8
+[02-Mar-2021 23:55:47 UTC] PHP Parse error:  syntax error, unexpected 'get_header' (T_STRING) in C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\themes\neve\404.php on line 8
+[02-Mar-2021 23:55:51 UTC] PHP Parse error:  syntax error, unexpected 'get_header' (T_STRING) in C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\themes\neve\404.php on line 8
+[05-Mar-2021 22:29:36 UTC] PHP Parse error:  syntax error, unexpected 'ipsum' (T_STRING) in C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\themes\neve\404.php on line 9
+[05-Mar-2021 22:30:45 UTC] PHP Parse error:  syntax error, unexpected '<', expecting end of file in C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\themes\neve\404.php on line 9
+[05-Mar-2021 22:30:54 UTC] PHP Parse error:  syntax error, unexpected '<', expecting end of file in C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\themes\neve\404.php on line 7
+[05-Mar-2021 22:30:55 UTC] PHP Parse error:  syntax error, unexpected '<', expecting end of file in C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\themes\neve\404.php on line 7
+[05-Mar-2021 22:30:55 UTC] PHP Parse error:  syntax error, unexpected '<', expecting end of file in C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\themes\neve\404.php on line 7
+[18-Mar-2021 23:39:11 UTC] PHP Fatal error:  Uncaught Exception: WPGMZA\Marker ID '2' not found in C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\plugins\wp-google-maps\includes\class.crud.php:413
+Stack trace:
+#0 C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\plugins\wp-google-maps\includes\class.crud.php(84): WPGMZA\Crud->read('single-read')
+#1 C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\plugins\wp-google-maps\includes\class.marker.php(29): WPGMZA\Crud->__construct('wp_wpgmza', '2', 'single-read')
+#2 [internal function]: WPGMZA\Marker->__construct('2')
+#3 C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\plugins\wp-google-maps\includes\class.factory.php(57): ReflectionClass->newInstanceArgs(Array)
+#4 C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\plugins\wp-google-maps\includes\class.rest-api.php(828): WPGMZA\Factory::createInstance('2')
+#5 C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\plugins\wp-google-maps\includes\class.rest-api.php(147 in C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\plugins\wp-google-maps\includes\class.crud.php on line 413
+[18-Mar-2021 23:40:45 UTC] PHP Fatal error:  Uncaught Exception: WPGMZA\Marker ID '4' not found in C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\plugins\wp-google-maps\includes\class.crud.php:413
+Stack trace:
+#0 C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\plugins\wp-google-maps\includes\class.crud.php(84): WPGMZA\Crud->read('single-read')
+#1 C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\plugins\wp-google-maps\includes\class.marker.php(29): WPGMZA\Crud->__construct('wp_wpgmza', '4', 'single-read')
+#2 [internal function]: WPGMZA\Marker->__construct('4')
+#3 C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\plugins\wp-google-maps\includes\class.factory.php(57): ReflectionClass->newInstanceArgs(Array)
+#4 C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\plugins\wp-google-maps\includes\class.rest-api.php(828): WPGMZA\Factory::createInstance('4')
+#5 C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\plugins\wp-google-maps\includes\class.rest-api.php(147 in C:\Users\Erick Q\Local Sites\smartmarketing\app\public\wp-content\plugins\wp-google-maps\includes\class.crud.php on line 413
