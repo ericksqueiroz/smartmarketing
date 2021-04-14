@@ -170,6 +170,7 @@ body .one_widget .bofore_del:before {
 .chaty-whatsapp-message p {
     margin: 0;
     padding: 0;
+    color: #303030;
 }
 .snap-wee-title:before {
     content: "";
@@ -1331,7 +1332,7 @@ body.chaty-in-mobile .chaty-widget-i.chaty-close-settings.i-trigger-close:before
     display: none;
 }
 body .chaty-widget.one_widget  *.i-trigger.one-widget.show-channel .chaty-widget-i-title, body .chaty-widget.one_widget  *.i-trigger.one-widget.show-channel .chaty-widget-i:before {
-    opacity: 0 !important;
+    opacity: 1 !important;
 }
 body .chaty-widget.one_widget  *.i-trigger.one-widget.show-channel:hover .chaty-widget-i-title, body .chaty-widget.one_widget  *.i-trigger.one-widget.show-channel:hover .chaty-widget-i:before {
     opacity: 1 !important;

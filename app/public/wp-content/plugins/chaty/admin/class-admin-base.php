@@ -231,7 +231,7 @@ class CHT_Admin_Base
 			    wp_enqueue_style( 'jquery-ui-css', plugins_url( '../admin/assets/css/datepicker.min.css', __FILE__ ), array(), CHT_VERSION );
 		    }
 
-		    wp_enqueue_style( $this->plugin_slug, plugins_url( '../admin/assets/css/cht-style.min.css', __FILE__ ), array(), CHT_VERSION );
+		    wp_enqueue_style( $this->plugin_slug, plugins_url( '../admin/assets/css/cht-style.css', __FILE__ ), array(), CHT_VERSION );
 	    }
     }
 
@@ -802,6 +802,7 @@ class CHT_Admin_Base
     public static function get_font_list(){
         return array(
             // System fonts.
+	        "System Stack" => 'Default',
             'Arial' => 'Default',
             'Tahoma' => 'Default',
             'Verdana' => 'Default',

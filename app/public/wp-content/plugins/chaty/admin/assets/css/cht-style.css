@@ -1063,6 +1063,35 @@ li#chaty-social-Poptin {
 input.channels__input.border-red {
     border-color: #dd0000;
 }
+.chaty-setting-col > div > *.mail-merge-tags {
+    display: block;
+}
+.mail-merge-tags span {
+    display: inline-block;
+    background: #a886cd;
+    color: #fff;
+    font-size: 14px;
+    padding: 0 5px;
+    margin: 4px 4px 0 0;
+    border-radius: 5px;
+}
+.pre-message-whatsapp {
+    position: relative;
+}
+.pre-message-whatsapp button {
+    position: absolute;
+    border: none;
+    top: 5px;
+    right: 5px;
+    background: transparent;
+    display:none;
+}
+.pre-message-whatsapp button svg {
+    fill: #a5a5a5;
+}
+.disable-message.label-tooltip.icon {
+    height: auto !important;
+}
 @media (min-width: 1281px) {
     .btn-save-sticky {
         left: calc(50vw - 480px + 1050px / 12 * 7 + 475px);
@@ -4545,11 +4574,14 @@ input[type=search].search-input, select.search-input {
 .lead-search-box {
     float: right;
 }
+.leads-buttons {
+    padding: 20px 0;
+}
 a#wpappp_export_to_csv {
     background: #FF6624;
-    display: block;
+    display: inline-block;
     text-align: center;
-    padding: 10px 15px;
+    padding: 8px 15px;
     color: #fff;
     text-decoration: none;
     border-radius: 4px;
@@ -4646,19 +4678,21 @@ a.url {
     background: #f3f5f6;
 }
 .main .channels-icons > .icon.chat-channel-Contact_Us {
-    width: 180px;
+    width: 120px;
     line-height: 48px;
     text-align: center;
 }
 
 .main .channels-icons > .icon.chat-channel-Contact_Us span.icon-box {
-    display: inline-block;
+    display: block;
     height: 48px;
     border-radius: 24px;
     background: #bdbdbd;
-    padding: 0 20px 0 0;
+    padding: 0;
     transition: all .2s;
     cursor: pointer;
+    margin: 0;
+    padding: 0;
 }
 .main .channels-icons > .icon.chat-channel-Contact_Us.active span.icon-box, .main .channels-icons > .icon.chat-channel-Contact_Us:hover span.icon-box {
     background: rgb(37, 57, 116);
@@ -4667,9 +4701,12 @@ a.url {
     display: inline-block;
     vertical-align: top;
     font-size: 14px;
-    padding: 0 0 0 5px;
-    font-family: Rubik, sans-serif;
+    padding: 0;
+    margin: 0;
     color: #fff;
+}
+.main .channels-icons > .icon.chat-channel-Contact_Us span.icon-box svg {
+    display: none;
 }
 .chaty-new-widget-row.no-records {
     border: 1px solid #605dec;

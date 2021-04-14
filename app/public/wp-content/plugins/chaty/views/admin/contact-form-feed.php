@@ -115,30 +115,61 @@ if(!empty($conditionArray)) {
         position: inherit;
     }
 </style>
+<style>
+    body {
+        background: #f0f0f1 !important;
+    }
+    #wpfooter {
+        position: relative;
+    }
+    .chaty-updates-form {
+        width: 768px;
+        padding: 70px 40px;
+        box-shadow: 0px 20px 25px rgb(0 0 0 / 10%), 0px 10px 10px rgb(0 0 0 / 4%);
+        display: flex;
+        margin: 100px auto 0;
+        font-family: Rubik, sans-serif;
+        align-items: center;
+    }
+    .update-title {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 26px;
+        line-height: 150%;
+        align-items: center;
+        color: #334155;
+        position: relative;
+        padding: 0 0 10px 0;
+    }
+    .updates-form-form-left {
+        padding: 0px 20px 0px 0;
+    }
+    .updates-form-form-right p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 150%;
+        position: relative;
+        padding: 0 0 20px 0;
+        color: #475569;
+        margin: 30px 0;
+    }
+    .update-title:after {
+        content: "";
+        border: 1px solid #3C85F7;
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        width: 90px;
+    }
+</style>
 <div class="wrap">
 	<?php
 	$result = $wpdb->get_results ($query);
-	if($result){
-		?>
-        <div class="">
-            <table id="mystickyelement_contact_tab">
-                <tbody>
-                <tr>
-                    <td><strong>Download &amp; Export All Subscriber to CSV file: </strong></td>
-                    <td><a href="<?php echo admin_url("?download_chaty_file=chaty_contact_leads&nonce=".wp_create_nonce("download_chaty_contact_leads")) ?>" class="wpappp_buton" id="wpappp_export_to_csv" value="Export to CSV">Download &amp; Export to CSV</a></td>
-                    <td><strong>Delete All Subscribers from Database: </strong></td>
-                    <td><input type="button" class="wpappp_buton" id="chaty_delete_all_leads" value="Delete All Data"></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-		<?php
-	}
 	?>
     <div>
-
-        <h2>Contact Form Leads
-			<?php if($result || !empty($search) || $search_for != 'all_time'){ ?>
+		<?php if($result || !empty($search) || $search_for != 'all_time'){ ?>
+            <h1 class="wp-heading">Contact Form Leads
                 <div class="lead-search-box">
                     <form action="<?php echo admin_url("admin.php") ?>" method="get">
                         <label class="screen-reader-text" for="post-search-input">Search:</label>
@@ -156,8 +187,8 @@ if(!empty($conditionArray)) {
                         </div>
                     </form>
                 </div>
-			<?php } ?>
-        </h2>
+            </h1>
+		<?php } ?>
         <form action="" method="post">
 			<?php if($result){ ?>
                 <div class="tablenav top">
@@ -244,15 +275,27 @@ if(!empty($conditionArray)) {
 					echo "</div>";
 				}
 				?>
+                <div class="leads-buttons">
+                    <a href="<?php echo admin_url("?download_chaty_file=chaty_contact_leads&nonce=".wp_create_nonce("download_chaty_contact_leads")) ?>" class="wpappp_buton" id="wpappp_export_to_csv" value="Export to CSV">Download &amp; Export to CSV</a>
+                    <input type="button" class="wpappp_buton" id="chaty_delete_all_leads" value="Delete All Data">
+                </div>
 			<?php } else if(!empty($search) || $search_for != "all_time")  { ?>
-                <div class="chaty-new-widget-wrap">
-                    <h2 class="no-records-title">Contact Form Leads</h2>
-                    <div class="chaty-new-widget-row no-records">No records are found</div>
+                <div class="chaty-updates-form">
+                    <div class="updates-form-form-right">
+                        <div class="update-title">Contact Form Leads</div>
+                        <p>No records are found</p>
+                    </div>
                 </div>
 			<?php } else { ?>
-                <div class="chaty-new-widget-wrap">
-                    <h2 class="no-records-title">Contact Form Leads</h2>
-                    <div class="chaty-new-widget-row no-records">Your contact form leads will appear here once you get some leads. Please make sure you've added the contact form channel to your Chaty channels in order to collect leads</div>
+                <div class="chaty-updates-form">
+                    <div class="updates-form-form-left">
+                        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                        <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_5x2APt.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+                    </div>
+                    <div class="updates-form-form-right">
+                        <div class="update-title">Contact Form Leads</div>
+                        <p>Your contact form leads will appear here once you get some leads. Please make sure you've added the contact form channel to your Chaty channels in order to collect leads</p>
+                    </div>
                 </div>
 			<?php } ?>
             <input type="hidden" name="remove_chaty_leads" value="<?php echo wp_create_nonce("remove_chaty_leads") ?>">
@@ -261,6 +304,7 @@ if(!empty($conditionArray)) {
         </form>
     </div>
 </div>
+
 <script>
     jQuery(document).ready(function(){
         var selectedURL = '<?php echo admin_url("admin.php?page=chaty-contact-form-feed&remove_chaty_leads=".wp_create_nonce("remove_chaty_leads")."&action=delete_message&paged={$current}&search={$search}&chaty_leads=") ?>';

@@ -127,6 +127,7 @@
                             if (chaty_settings.object_settings.click_setting != 'click') {
                                 p = true;
                             }
+                            p = true;
                             d += '<div class="chaty-widget-i chaty-close-settings i-trigger-open ' + p + ' ">', d += function (t) {
                                 switch (t.object_settings.widget_type) {
                                     case"chat-image":
@@ -263,6 +264,7 @@
                                 //o();
                                 if (chaty_settings.object_settings.click_setting == 'click') {
                                     if(!jQuery(".i-trigger").hasClass("one-widget")) {
+                                        jQuery(this).closest(".chaty-widget-i").addClass("hide-chaty-arrow");
                                         jQuery("body .chaty-widget-i-title.true").remove();
                                     }
                                 }
@@ -275,6 +277,7 @@
                                 o();
                                 if (chaty_settings.object_settings.click_setting == 'click') {
                                     if(!jQuery(".i-trigger").hasClass("one-widget")) {
+                                        jQuery(this).closest(".chaty-widget-i").addClass("hide-chaty-arrow");
                                         jQuery("body .chaty-widget-i-title.true").remove();
                                     }
                                 }
@@ -338,11 +341,16 @@
                                     jQuery(".i-trigger").html(htmlToAdd);
                                 }
                                 if(!get_cta_status()) {
-                                    jQuery(".i-trigger").attr("data-title", jQuery(".chaty-widget-is .chaty-widget-i-title p").html());
-                                    jQuery(".i-trigger .chaty-widget-i-title p").html(chaty_settings.object_settings.cta);
+                                    if(chaty_settings.object_settings['click_setting'] == "all_time") {
+                                        jQuery(".i-trigger").attr("data-title", jQuery(".chaty-widget-is .chaty-widget-i-title p").html());
+                                        jQuery(".i-trigger .chaty-widget-i-title p").html(chaty_settings.object_settings.cta);
+                                    }
                                 } else {
                                     jQuery(".i-trigger").addClass("show-channel");
-                                    jQuery("")
+                                    if(chaty_settings.object_settings['click_setting'] == "all_time") {
+                                        jQuery(".i-trigger").attr("data-title", jQuery(".chaty-widget-is .chaty-widget-i-title p").html());
+                                        jQuery(".i-trigger .chaty-widget-i-title p").html(chaty_settings.object_settings.cta);
+                                    }
                                 }
                                 jQuery(".chaty-widget").addClass("one_widget");
 
@@ -522,7 +530,7 @@
                             jQuery(document).on("click", ".i-trigger .i-trigger-open, .i-trigger.one-widget", function () {
                                 jQuery(".cht-pending-message").remove();
 
-                                if(jQuery(this).hasClass("one-widget")) {
+                                if(chaty_settings.object_settings['click_setting'] != "all_time" && jQuery(this).hasClass("one-widget")) {
                                     jQuery(this).addClass("show-channel");
                                     var tooltipText = jQuery(this).data("title");
                                     jQuery(this).find(".chaty-widget-i-title").find("p").html(tooltipText);
@@ -531,11 +539,9 @@
                         }
 
                         jQuery(document).on("click", ".i-trigger.one-widget", function(){
-                            if(jQuery(this).hasClass("one-widget")) {
-
+                            if(chaty_settings.object_settings['click_setting'] != "all_time" && jQuery(this).hasClass("one-widget")) {
                                 jQuery(this).addClass("show-channel");
                                 var tooltipText = jQuery(this).data("title");
-                                console.log("tooltipText: "+tooltipText);
                                 jQuery(this).find(".chaty-widget-i-title").find("p").html(tooltipText);
                             }
                         });
@@ -641,7 +647,6 @@
                             jQuery(".chaty-widget").addClass("hide-widget");
                         }
 
-
                         if(jQuery(".chaty-widget-i-title").length) {
                             jQuery(".chaty-widget-i-title").each(function(){
                                 if(jQuery.trim(jQuery(this).text()) == "") {
@@ -651,6 +656,9 @@
                             });
                         }
 
+                        if(!jQuery(".chaty-widget-i.true.chaty-widget-i-title").length) {
+                            jQuery(".chaty-widget-i").addClass("hide-chaty-arrow");
+                        }
                     });
                     jQuery(".chaty-widget-i-title").each(function () {
                         if (jQuery(this).text() == "") {
@@ -700,9 +708,20 @@
                     jQuery("body").append(htmlString);
 
                     if(jQuery(".chaty-inline-popup .default-value").length) {
+
+                        thisHref = jQuery(".chaty-inline-popup .default-value").text();
+                        thisHref = decodeURI(thisHref);
+                        thisHref = thisHref.replace(/{title}/g, jQuery("title").text());
+                        thisHref = thisHref.replace(/{url}/g, window.location.href);
+
                         jQuery(".chaty-whatsapp-msg").val(jQuery(".chaty-inline-popup .default-value").text());
                         jQuery(".chaty-whatsapp-phone").val(jQuery(".chaty-inline-popup .default-msg-phone").text());
-                        jQuery(".chaty-whatsapp-message").html(jQuery(".chaty-inline-popup .default-msg-value").html());
+
+                        chatyHtml = jQuery(".chaty-inline-popup .default-msg-value").html();
+                        chatyHtml = chatyHtml.replace(/{title}/g, jQuery("title").text());
+                        chatyHtml = chatyHtml.replace(/{url}/g, window.location.href);
+
+                        jQuery(".chaty-whatsapp-message").html(chatyHtml);
                     }
                     jQuery(".chaty-widget").addClass("active");
                     setTimeout(function(){

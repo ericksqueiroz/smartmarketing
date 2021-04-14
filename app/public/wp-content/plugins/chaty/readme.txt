@@ -3,10 +3,10 @@ Contributors: galdub, tomeraharon, premio
 Tags: whatsapp, whatsapp chat, facebook messenger, click to chat, chat, chat button, call now button, messenger, whatsapp button, chat icon, contact button, click to call
 Requires at least: 3.1
 Tested up to: 5.7
-Stable tag: 2.7.6
+Stable tag: 2.7.7
 Plugin URI: https://premio.io/downloads/chaty/
 
-Whatsapp, Facebook Messenger, Telegram, Viber, Email, Phone call, SMS and more with customizable chat & call buttons. Chat with your visitors on WhatsApp, Facebook Messenger, and other chat channels!
+Whatsapp, Facebook Messenger, Telegram, TikTok Viber, Email, Phone call, SMS and more with customizable chat & call buttons. Chat with your visitors on WhatsApp, Facebook Messenger, and other chat channels!
 
 == Description ==
 
@@ -14,7 +14,7 @@ Whatsapp, Facebook Messenger, Telegram, Viber, Email, Phone call, SMS and more w
 Show a chat button on the bottom of your site and communicate with your customers.</strong>
 
 * Get more leads and calls
-* Let your customers chat with you via their favorite channels like Facebook Messenger, WhatsApp, Viber, Slack, Telegram, and many other chat channels
+* Let your customers chat with you via their favorite channels like Facebook Messenger, WhatsApp, Viber, Slack, Telegram, TikTok and many other chat channels
 * Improve your customer support
 * Direct customers to your store's location
 
@@ -23,7 +23,7 @@ Show a chat button on the bottom of your site and communicate with your customer
 = The ultimate click to chat and call now button =
 Are you looking for a chat button or a click to call button? Want to make it easier for your potential customers to contact you via WhatsApp, Facebook Messenger or Telegram?
 
-Chaty is the perfect chat plugin for you! With Chaty you can display a call widget, Whatsapp button, email button, SMS button, Google Maps button, Vkontakte button, Line.me button, Viber button, and other chat widgets. Your visitors are already using their favorite chat apps, and most of them prefer to contact you using those chat apps. By using Chaty, you give your website visitors the option to chat with you even after they leave your website. Want to use our robust pro version? Check out <a href="https://premio.io/downloads/chaty/?utm_source=wordpressorg" target="_blank" title="Chaty pro plans"><strong>Chaty Pro Plans</strong></a>.
+Chaty is the perfect chat plugin for you! With Chaty you can display a call widget, Whatsapp button, email button, SMS button, TikTok, Google Maps button, Vkontakte button, Line.me button, Viber button, and other chat widgets. Your visitors are already using their favorite chat apps, and most of them prefer to contact you using those chat apps. By using Chaty, you give your website visitors the option to chat with you even after they leave your website. Want to use our robust pro version? Check out <a href="https://premio.io/downloads/chaty/?utm_source=wordpressorg" target="_blank" title="Chaty pro plans"><strong>Chaty Pro Plans</strong></a>.
 
 = What can you do with Chaty =
 Here are some classic use cases for Chaty
@@ -49,6 +49,7 @@ Contact Us Form
 Email
 SMS
 Instagram
+TikTok (Tik Tok)
 Snapchat
 Launch a <a href="https://www.poptin.com/?utm_source=chatylisting" target="_blank">Poptin pop up</a>
 Twitter
@@ -76,22 +77,23 @@ Link to an external channel/contact page (New feature: add 2 custom buttons and 
 7. Choose between 7 different colors.
 8. New! WhatsApp chat pop up - show a WhatsApp chat pop up to your visitors so that they can start a WhatsApp conversation with you on your website (you can open the WhatsApp pop up by default, or open it when the user clicks on the WhatsApp icon). After they click on the send button, they'll be redirected to WhatsApp to continue the conversation there (<a href="https://demo.premio.io/chaty/?utm_source=wordpressorg" target="_blank" title="Premio.io demo site">click here</a> to see it in action)
 9. New! Contact Us Form - add a contact form as one of your Chaty channels. Your visitors will be able to fill out their details using the contact us form (<a href="https://demo.premio.io/chaty/?utm_source=wordpressorg" target="_blank" title="Premio.io demo site">click here</a> to see it in action)
-10. New! Show your chat buttons in vertical mode or horizontal mode.
-11. Change the size of the widget.
-12. Choose between 4 beautiful chat button designs.
-13. You decide if you want to show the widget on mobile & desktop or both!
-14. Select your default state - you can show all your chat channels in an "open-state", or show the widget and let the visitors click on it or hover over it (you decide) to open the chat widget up and see all your chat icons.
-15. Show different channels for mobile and desktop. E.g. On mobile, you can display a call now button, Viber button, and a Telegram button, and on desktop, you can display a WhatsApp button and a Facebook Messenger chat button.
-16. Change the channel icons order using drag and drop interface.
-17. New feature: we've added 3 brand new buttons - Instagram, Twitter, LinkedIn, and an option to add 2 custom buttons.
-18. Change the font of your chat widget's call-to-action message and the chat channels tooltips.
-19. Decide if you want the custom chat button to open in a new tab or in the current tab.
-20.New! Launch the Chaty chat button using a JavaScript function launch_chaty(); - you can use it to open the chat button in any custom event.
-21. New! Make your custom channels act as an existing channel. For example, you can create two WhatsApp buttons or two Facebook Messenger buttons.
-22. New! You can now add a Slack chat button.
-23. New! We've added a third custom chat button, you can link to any page or fire a JavaScript code.
-24. New! Now it's much easier to enter your WhatsApp number. Select your country and add your local WhatsApp number, and avoid confusion
-25. New! Decide whether you want to use the WhatsApp WAME link or WhatsApp desktop link in the WhatsApp settings
+10. New! TikTok button - add a TikTok button to your website and let your visitors engage with you on TikTok
+11. New! Show your chat buttons in vertical mode or horizontal mode.
+12. Change the size of the widget.
+13. Choose between 4 beautiful chat button designs.
+14. You decide if you want to show the widget on mobile & desktop or both!
+15. Select your default state - you can show all your chat channels in an "open-state", or show the widget and let the visitors click on it or hover over it (you decide) to open the chat widget up and see all your chat icons.
+16. Show different channels for mobile and desktop. E.g. On mobile, you can display a call now button, Viber button, and a Telegram button, and on desktop, you can display a WhatsApp button and a Facebook Messenger chat button.
+17. Change the channel icons order using drag and drop interface.
+18. New feature: we've added 3 brand new buttons - Instagram, Twitter, LinkedIn, and an option to add 2 custom buttons.
+19. Change the font of your chat widget's call-to-action message and the chat channels tooltips.
+20. Decide if you want the custom chat button to open in a new tab or in the current tab.
+21.New! Launch the Chaty chat button using a JavaScript function launch_chaty(); - you can use it to open the chat button in any custom event.
+22. New! Make your custom channels act as an existing channel. For example, you can create two WhatsApp buttons or two Facebook Messenger buttons.
+23. New! You can now add a Slack chat button.
+24. New! We've added a third custom chat button, you can link to any page or fire a JavaScript code.
+25. New! Now it's much easier to enter your WhatsApp number. Select your country and add your local WhatsApp number, and avoid confusion
+26. New! Decide whether you want to use the WhatsApp WAME link or WhatsApp desktop link in the WhatsApp settings
 
 = What do you get in the Pro plan? =
 Unlock the Pro features for only $39/year
@@ -142,6 +144,8 @@ You can add a contact form as a channel, this way your visitors can contact you 
 * SMS - add your phone number, and let your visitors send you a direct SMS via their mobile devices.
 
 * Instagram button - add your Instagram username and allow your visitors to chat with you using Instagram direct or just follow you
+
+* TikTok (Tik Tok) button - add your TikTok handle and let your visitors find your TikTok profile and engage with you
 
 * Twitter button - add your Twitter handle and let your visitors chat with your using Twitter messages, or just twit and follow you 
 
@@ -253,6 +257,9 @@ Yes! You can even decide what chat buttons will show up on each device (desktop/
 
 
 == Changelog ==
+
+= 2.7.7 =
+Added TikTok to the buttons list, added some slight improvements to the product flow, and fixed some bugs
 
 = 2.7.6 =
 Elementor and WooCommerce JavaSscript bug fixed

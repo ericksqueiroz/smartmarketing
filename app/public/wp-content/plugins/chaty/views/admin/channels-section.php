@@ -385,6 +385,9 @@ if (!defined('ABSPATH')) {
                         if(empty($channel_type)) {
                             $channel_type = $social['slug'];
                         }
+	                    if($channel_type == "Telegram") {
+		                    $value['value'] = trim($value['value'], "@");
+	                    }
                         ?>
                         <!-- Social media setting box: start -->
                         <li data-id="<?php echo esc_attr($social['slug']) ?>" class="chaty-channel" data-channel="<?php echo esc_attr($channel_type) ?>" id="chaty-social-<?php echo esc_attr($social['slug']) ?>">
@@ -808,8 +811,9 @@ if (!defined('ABSPATH')) {
                                                 <div class="chaty-setting-col">
                                                     <label for="email_subject_for_<?php echo esc_attr($social['slug']); ?>">Email subject</label>
                                                     <div>
-                                                        <?php $field_value = isset($value['email_subject'])?$value['email_subject']:"" ?>
+                                                        <?php $field_value = isset($value['email_subject'])?$value['email_subject']:"New lead from Chaty - {name} - {date} {hour}" ?>
                                                         <input id="email_subject_for_<?php echo esc_attr($social['slug']); ?>" type="text" name="cht_social_<?php echo esc_attr($social['slug']); ?>[email_subject]" value="<?php esc_attr_e($field_value); ?>" >
+                                                        <div class="mail-merge-tags"><span>{name}</span><span>{phone}</span><span>{email}</span><span>{date}</span><span>{hour}</span></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -918,8 +922,11 @@ if (!defined('ABSPATH')) {
                                                 <div>
                                                     <div class="pro-features">
                                                         <div class="pro-item">
-                                                            <input disabled id="cht_social_message_<?php echo esc_attr($social['slug']); ?>" type="text" name="" value="<?php esc_attr_e($pre_set_message) ?>" >
-                                                            <span class="supported-tags"><span class="icon label-tooltip support-tooltip" data-label="{title} tag grabs the page title of the webpage">{title}</span> and  <span class="icon label-tooltip support-tooltip" data-label="{url} tag grabs the URL of the page">{url}</span> tags are supported</span>
+                                                            <div class="pre-message-whatsapp">
+                                                                <input disabled id="cht_social_message_<?php echo esc_attr($social['slug']); ?>" type="text" name="" value="<?php esc_attr_e($pre_set_message) ?>" >
+                                                                <span class="supported-tags"><span class="icon label-tooltip support-tooltip" data-label="{title} tag grabs the page title of the webpage">{title}</span> and  <span class="icon label-tooltip support-tooltip" data-label="{url} tag grabs the URL of the page">{url}</span> tags are supported</span>
+                                                                <button data-button="cht_social_message_<?php echo esc_attr($social['slug']); ?>" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0m0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10"></path><path d="M8 7a2 2 0 1 0-.001 3.999A2 2 0 0 0 8 7M16 7a2 2 0 1 0-.001 3.999A2 2 0 0 0 16 7M15.232 15c-.693 1.195-1.87 2-3.349 2-1.477 0-2.655-.805-3.347-2H15m3-2H6a6 6 0 1 0 12 0"></path></svg></button>
+                                                            </div>
                                                         </div>
                                                         <div class="pro-button">
                                                             <a target="_blank" href="<?php echo esc_url($this->getUpgradeMenuItemUrl());?>"><?php esc_attr_e('Upgrade to Pro', CHT_OPT);?></a>

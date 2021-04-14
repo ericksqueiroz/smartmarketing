@@ -1821,6 +1821,7 @@ function upload_chaty_image(socialSlug) {
 
 function toggle_chaty_setting(socId) {
     jQuery("#chaty-social-" + socId).find(".chaty-advance-settings").toggle();
+    jQuery("#chaty-social-" + socId).find(".chaty-advance-settings").toggleClass('active');
     if(socId == "Contact_Us") {
         if(jQuery("#Contact_Us-close-btn").length) {
             var nonce = jQuery("#Contact_Us-close-btn").data("nonce");
@@ -1839,6 +1840,11 @@ function toggle_chaty_setting(socId) {
                 });
             }
         }
+    }
+    if(jQuery("#chaty-social-" + socId+ " .chaty-advance-settings.active").length) {
+        jQuery("body,html").animate({
+            scrollTop: jQuery("#chaty-social-" + socId+ " .chaty-advance-settings.active").offset().top - 50
+        }, 500);
     }
     change_custom_preview();
 }

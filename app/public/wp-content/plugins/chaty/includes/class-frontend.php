@@ -113,18 +113,6 @@ class CHT_Frontend extends CHT_Admin_Base
 		echo "1"; exit;
 	}
 
-	function getWpTimezone() {
-		$timezone_string = get_option( 'timezone_string' );
-		if ( ! empty( $timezone_string ) ) {
-			return $timezone_string;
-		}
-		$offset  = get_option( 'gmt_offset' );
-		$hours   = (int) $offset;
-		$minutes = abs( ( $offset - (int) $offset ) * 60 );
-		$offset  = "UTC".sprintf( '%+03d:%02d', $hours, $minutes );
-		return $offset;
-	}
-
     function chaty_front_form_save_data() {
         $response = array(
             'status' => 0,
@@ -197,8 +185,10 @@ class CHT_Frontend extends CHT_Admin_Base
                     $send_leads_in_email = $value['send_leads_in_email'];
                     $save_leads_locally = $value['save_leads_locally'];
 
-	                $time_zone = $this->getWpTimezone();
-	                date_default_timezone_set($time_zone);
+	                date_default_timezone_set("UTC");
+	                $current_date = date("Y-m-d H:i:s");
+
+	                $new_date = get_date_from_gmt($current_date, "Y-m-d H:i:s");
 
                     global $wpdb;
                     $chaty_table = $wpdb->prefix . 'chaty_contact_form_leads';
@@ -222,7 +212,7 @@ class CHT_Frontend extends CHT_Admin_Base
                     $insert['ref_page'] = $ref_url;
                     $insert['ip_address'] = $this->get_user_ipaddress();
                     $insert['widget_id'] = esc_sql(sanitize_text_field($widget));
-                    $insert['created_on'] = date_i18n("Y-m-d H:i:s");
+                    $insert['created_on'] = $new_date;
                     $wpdb->insert($chaty_table, $insert);
 
 
@@ -296,6 +286,9 @@ class CHT_Frontend extends CHT_Admin_Base
                 }
             }
             $font_family = get_option('cht_widget_font');
+	        if($font_family == "System Stack") {
+		        $font_family = "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif";
+	        }
             /* add inline css for custom position */
 
             $animation_class = get_option("chaty_attention_effect");
@@ -476,14 +469,14 @@ class CHT_Frontend extends CHT_Admin_Base
 
                 /* add js for front end widget */
                 if(!empty($font_family)) {
-                    if(!in_array($font_family, array("Arial", "Tahoma", "Verdana", "Helvetica", "Times New Roman", "Trebuchet MS", "Georgia"))) {
+	                if(!in_array($font_family, array("Arial", "Tahoma", "Verdana", "Helvetica", "Times New Roman", "Trebuchet MS", "Georgia", "System Stack", "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"))) {
                         wp_enqueue_style('custom-google-fonts', '//fonts.googleapis.com/css?family=' . urlencode($font_family), false, false);
                     }
                 }
                 /* WP change this */
                 wp_enqueue_style( 'chaty-front-css', CHT_PLUGIN_URL."css/chaty-front.min.css", array(), $chaty_updated_on);
                 wp_add_inline_style('chaty-front-css', $chaty_css);
-                wp_enqueue_script( "chaty-front-end", CHT_PLUGIN_URL."js/cht-front-script.min.js", array( 'jquery' ), $chaty_updated_on, false);
+                wp_enqueue_script( "chaty-front-end", CHT_PLUGIN_URL."js/cht-front-script.js", array( 'jquery' ), $chaty_updated_on, false);
                 wp_localize_script('chaty-front-end', 'chaty_settings',  $data);
             }
         endif;
@@ -654,6 +647,9 @@ class CHT_Frontend extends CHT_Admin_Base
             if(empty($channel_type)) {
                 $channel_type = $social['slug'];
             }
+	        if($channel_type == "Telegram") {
+		        $value['value'] = trim($value['value'], "@");
+	        }
             ob_start();
             ?>
             <!-- Social media setting box: start -->
@@ -1078,8 +1074,9 @@ class CHT_Frontend extends CHT_Admin_Base
                                     <div class="chaty-setting-col">
                                         <label for="email_subject_for_<?php echo esc_attr($social['slug']); ?>">Email subject</label>
                                         <div>
-                                            <?php $field_value = isset($value['email_subject'])?$value['email_subject']:"" ?>
+                                            <?php $field_value = isset($value['email_subject'])?$value['email_subject']:"New lead from Chaty - {name} - {date} {hour}" ?>
                                             <input id="email_subject_for_<?php echo esc_attr($social['slug']); ?>" type="text" name="cht_social_<?php echo esc_attr($social['slug']); ?>[email_subject]" value="<?php esc_attr_e($field_value); ?>" >
+                                            <div class="mail-merge-tags"><span>{name}</span><span>{phone}</span><span>{email}</span><span>{date}</span><span>{hour}</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1187,7 +1184,11 @@ class CHT_Frontend extends CHT_Admin_Base
                                     <div>
                                         <div class="pro-features">
                                             <div class="pro-item">
-                                                <input disabled id="cht_social_message_<?php echo esc_attr($social['slug']); ?>" type="text" name="" value="<?php esc_attr_e($pre_set_message) ?>" >
+                                                <div class="pre-message-whatsapp">
+                                                    <input disabled id="cht_social_message_<?php echo esc_attr($social['slug']); ?>" type="text" name="" value="<?php esc_attr_e($pre_set_message) ?>" >
+                                                    <span class="supported-tags"><span class="icon label-tooltip support-tooltip" data-label="{title} tag grabs the page title of the webpage">{title}</span> and  <span class="icon label-tooltip support-tooltip" data-label="{url} tag grabs the URL of the page">{url}</span> tags are supported</span>
+                                                    <button data-button="cht_social_message_<?php echo esc_attr($social['slug']); ?>" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0m0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10"></path><path d="M8 7a2 2 0 1 0-.001 3.999A2 2 0 0 0 8 7M16 7a2 2 0 1 0-.001 3.999A2 2 0 0 0 16 7M15.232 15c-.693 1.195-1.87 2-3.349 2-1.477 0-2.655-.805-3.347-2H15m3-2H6a6 6 0 1 0 12 0"></path></svg></button>
+                                                </div>
                                             </div>
                                             <div class="pro-button">
                                                 <a target="_blank" href="<?php echo esc_url($this->getUpgradeMenuItemUrl());?>"><?php esc_attr_e('Upgrade to Pro', CHT_OPT);?></a>
@@ -1471,6 +1472,7 @@ class CHT_Frontend extends CHT_Admin_Base
                             $url = "sms:".$val;
                         } else if($channel_type == "telegram") {
                             /* setting for Telegram */
+	                        $val = ltrim($val, "@");
                             $url = "https://telegram.me/".$val;
                             $desktop_target = "_blank";
                             $mobile_target = "_blank";
@@ -1627,6 +1629,14 @@ class CHT_Frontend extends CHT_Admin_Base
                                 $popup_html .= "</form>";
                                 $popup_html .= "</div>";
                             }
+                        } else if($channel_type == "tiktok") {
+	                        $val = $value['value'];
+	                        $firstCharacter = substr($val, 0, 1);
+	                        if($firstCharacter != "@") {
+		                        $val = "@".$val;
+	                        }
+	                        $url = esc_url("https://www.tiktok.com/".$val);
+	                        $desktop_target = $mobile_target = "_blank";
                         }
 
                         /* Instagram checking for custom color */
